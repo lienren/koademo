@@ -2,20 +2,20 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-02 15:18:14
+ * @Last Modified time: 2018-01-08 16:55:12
  */
-
+'use strict';
 const http = require('http');
 const path = require('path');
 const koa = require('koa');
-const static = require('koa-static');
+const koastatic = require('koa-static');
 const cors = require('koa2-cors');
 const bodyParser = require('koa-bodyparser');
 const app = new koa();
 
 // 静态存放地址
 const staticPath = './static';
-app.use(static(path.join(__dirname, staticPath)));
+app.use(koastatic(path.join(__dirname, staticPath)));
 
 // 配置跨域访问
 app.use(
