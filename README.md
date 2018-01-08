@@ -2,7 +2,10 @@
 koa demo project
 
 # run
-first: yarn
-second: node app.js
+``` bash
+> yarn
+> node app.js
+```
 
-browser open: http://localhost:3000/
+# browser
+http://localhost:3000/
