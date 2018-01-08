@@ -2,12 +2,11 @@
  * @Author: Lienren 
  * @Date: 2018-01-08 16:21:55 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-08 17:07:30
+ * @Last Modified time: 2018-01-08 20:35:35
  */
 'use strict';
 const Router = require('koa-router');
 const squel = require('squel');
-const sqlhelper = require('./utils/mysql-helper');
 const router = new Router();
 
 router
@@ -26,11 +25,36 @@ router
       .from('sm_user')
       .toParam();
 
-    await sqlhelper.query(sql.text, sql.values).then(result => {
-      console.log(result);
-      ctx.body = {
-        ...result
-      };
+    await ctx.db
+      .query({
+        sql: sql.text,
+        values: sql.values
+      })
+      .then(result => {
+        console.log(result);
+        ctx.body = {
+          ...result
+        };
+      });
+  })
+  .get('/getbatch', async (ctx, next) => {
+    let sql = squel
+      .select()
+      .from('sm_user')
+      .toParam();
+
+    await ctx.db.batch([ctx.db.query({ sql: sql.text, values: sql.values })], {
+      completeHanding: results => {
+        console.log('result:', results);
+        ctx.body = {
+          ...results[0]
+        };
+      },
+      exceptionHandling: err => {
+        ctx.body = {
+          ...err
+        };
+      }
     });
   });
 
