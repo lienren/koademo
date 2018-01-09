@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-08 20:20:25
+ * @Last Modified time: 2018-01-09 11:02:51
  */
 'use strict';
 const http = require('http');
@@ -14,7 +14,7 @@ const bodyParser = require('koa-bodyparser');
 const app = new koa();
 
 const mysqlconfig = require('./configs/mysql_config');
-const sqlhelper = require('mysql-helper-simple').init(mysqlconfig);
+const sqlhelper = require('mysql-helper-simple')(mysqlconfig);
 app.context.db = sqlhelper
 
 // 静态存放地址

@@ -263,9 +263,9 @@ ms@2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
 
-mysql-helper-simple@^1.0.2:
-  version "1.0.4"
-  resolved "http://registry.npm.taobao.org/mysql-helper-simple/download/mysql-helper-simple-1.0.4.tgz#0c9121eb03fe86373b9ea7a0cec39f7050434fbb"
+mysql-helper-simple@^1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/mysql-helper-simple/download/mysql-helper-simple-1.1.1.tgz#5b0f2a4944de196983181110684aaed2829374e9"
   dependencies:
     mysql "^2.15.0"
 
