@@ -48,4 +48,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ## Utils
 
-./utils/mysql-helper
+[mysql-helper-simple](https://github.com/lienren/mysql-helper)
+
+> this is a mysql helper simple plug-in
