@@ -32,7 +32,9 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 ## Configs
 
-./configs/mysql_config.json
+### Mysql Config
+
+> config file path './configs/mysql_config.json'
 
 ```bash
 {
@@ -43,6 +45,30 @@ SET FOREIGN_KEY_CHECKS = 1;
   "database": "mydb",
   "charset": "UTF8_GENERAL_CI",
   "dateStrings": true
+}
+```
+
+### Redis Config
+
+> config file path './configs/redis_config.json'
+
+```bash
+{
+  "port": 6379,
+  "host": "127.0.0.1",
+  "db": 0
+}
+```
+
+other config
+
+```
+{
+  port: 6379,          // Redis port
+  host: '127.0.0.1',   // Redis host
+  family: 4,           // 4 (IPv4) or 6 (IPv6)
+  password: 'auth',
+  db: 0
 }
 ```
 
