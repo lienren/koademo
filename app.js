@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-10 14:41:10
+ * @Last Modified time: 2018-01-10 19:57:23
  */
 'use strict';
 const http = require('http');
@@ -13,9 +13,16 @@ const cors = require('koa2-cors');
 const bodyParser = require('koa-bodyparser');
 const app = new koa();
 
-const mysqlconfig = require('./configs/mysql_config');
-const sqlhelper = require('mysql-helper-simple')(mysqlconfig);
+// mysql数据库初始化
+const mysql_config = require('./configs/mysql_config');
+const sqlhelper = require('mysql-helper-simple')(mysql_config);
 app.context.db = sqlhelper;
+
+// redis初始化
+const redis_config = require('./configs/redis_config');
+const redis = require('ioredis');
+const redishelper = new redis(redis_config);
+app.context.redis = redishelper;
 
 // 静态存放地址
 const staticPath = './static';
