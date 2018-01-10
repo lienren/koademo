@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-09 11:02:51
+ * @Last Modified time: 2018-01-10 14:41:10
  */
 'use strict';
 const http = require('http');
@@ -15,7 +15,7 @@ const app = new koa();
 
 const mysqlconfig = require('./configs/mysql_config');
 const sqlhelper = require('mysql-helper-simple')(mysqlconfig);
-app.context.db = sqlhelper
+app.context.db = sqlhelper;
 
 // 静态存放地址
 const staticPath = './static';
@@ -40,6 +40,19 @@ app.use(
 
 // 使用koa-bodyparser中间件
 app.use(bodyParser());
+
+// 全局处理异常
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    ctx.body = {
+      code: err.code,
+      message: err.message
+    };
+    ctx.status = err.status || 500;
+  }
+});
 
 // 使用路由
 const router = require('./router');

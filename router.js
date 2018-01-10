@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-08 16:21:55 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-09 09:57:09
+ * @Last Modified time: 2018-01-10 17:20:06
  */
 'use strict';
 const Router = require('koa-router');
@@ -25,17 +25,14 @@ router
       .from('sm_user')
       .toParam();
 
-    await ctx.db
-      .query({
-        sql: sql.text,
-        values: sql.values
-      })
-      .then(result => {
-        console.log(result);
-        ctx.body = {
-          ...result
-        };
-      });
+    let result = await ctx.db.query({
+      sql: sql.text,
+      values: sql.values
+    });
+
+    ctx.body = {
+      ...result
+    };
   })
   .get('/getbatch', async (ctx, next) => {
     let sql = squel
@@ -43,19 +40,10 @@ router
       .from('sm_user')
       .toParam();
 
-    await ctx.db.batch([ctx.db.query({ sql: sql.text, values: sql.values })], {
-      completeHanding: results => {
-        console.log('result:', results);
-        ctx.body = {
-          ...results[0]
-        };
-      },
-      exceptionHandling: err => {
-        ctx.body = {
-          ...err
-        };
-      }
-    });
+    let results = await ctx.db.batch([ctx.db.query({ sql: sql.text, values: sql.values })]);
+    ctx.body = {
+      ...results[0]
+    };
   });
 
 module.exports = router.routes();
