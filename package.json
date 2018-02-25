@@ -6,6 +6,8 @@
   "dependencies": {
     "async": "^2.6.0",
     "axios": "^0.17.1",
+    "barcode": "^0.1.0",
+    "gm": "^1.23.1",
     "ioredis": "^3.2.2",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
@@ -14,7 +16,8 @@
     "koa2-cors": "^2.0.5",
     "md5": "^2.2.1",
     "mysql-helper-simple": "^1.1.2",
-    "squel": "^5.12.0"
+    "squel": "^5.12.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {},
   "scripts": {

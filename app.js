@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-10 19:57:23
+ * @Last Modified time: 2018-01-24 14:44:59
  */
 'use strict';
 const http = require('http');
@@ -19,31 +19,22 @@ const sqlhelper = require('mysql-helper-simple')(mysql_config);
 app.context.db = sqlhelper;
 
 // redis初始化
-const redis_config = require('./configs/redis_config');
-const redis = require('ioredis');
-const redishelper = new redis(redis_config);
-app.context.redis = redishelper;
+// const redis_config = require('./configs/redis_config');
+// const redis = require('ioredis');
+// const redishelper = new redis(redis_config);
+// app.context.redis = redishelper;
+// 启动redis服务
+// redis-server /usr/local/etc/redis.conf
+
+// mongodb初始化
+// sudo mongod --config /usr/local/etc/mongod.conf --auth
 
 // 静态存放地址
 const staticPath = './static';
 app.use(koastatic(path.join(__dirname, staticPath)));
 
 // 配置跨域访问
-app.use(
-  cors({
-    origin: function(ctx) {
-      if (ctx.url === '/test') {
-        return false;
-      }
-      return '*';
-    },
-    exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-    maxAge: 5,
-    credentials: true,
-    allowMethods: ['GET', 'POST', 'DELETE'],
-    allowHeaders: ['Content-Type', 'Authorization', 'Accept']
-  })
-);
+app.use(cors());
 
 // 使用koa-bodyparser中间件
 app.use(bodyParser());
