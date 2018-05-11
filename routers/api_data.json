@@ -1,0 +1,99 @@
+{
+  "xhw_realname": {
+    "code": "0",
+    "checkResult": "",
+    "result": "",
+    "timeout": 0
+  },
+  "xhw_level": {
+    "code": "0",
+    "resultValue": "",
+    "result": "",
+    "message": "",
+    "score": 0,
+    "timeout": 0
+  },
+  "xhw_nettime": {
+    "code": "0",
+    "resultValue": "",
+    "result": "",
+    "timeout": 0
+  },
+  "ty_realname": {
+    "rspCode": "00000",
+    "checkResultAllDetail": 1,
+    "timeout": 0
+  },
+  "ty_level": {
+    "rspCode": "00000",
+    "billingCharges": 0,
+    "timeout": 0
+  },
+  "ty_nettime": {
+    "rspCode": "00000",
+    "netWorkTime": 3,
+    "timeout": 0
+  },
+  "td_realname": {
+    "success": true,
+    "result": 0,
+    "timeout": 0
+  },
+  "td_realname2": {
+    "success": true,
+    "nextService": "",
+    "reason_code": "",
+    "reason_desc": "",
+    "mobile_three_element_consistence": "",
+    "error_info": "",
+    "mobile_online_time_info": "",
+    "mobile_online_time_consistence": 0,
+    "timeout": 0
+  },
+  "td_nettime": {
+    "success": true,
+    "result": 0,
+    "display": "",
+    "timeout": 0
+  },
+  "td_seq_id": {
+    "timeout": 0
+  },
+  "td_score": {
+    "final_decision": "Accept",
+    "final_score": 6,
+    "hit_rules": [{
+      "decision": "Accept",
+      "id": "935390",
+      "name": "借款设备标识缺失异常",
+      "parentUuid": "",
+      "score": 6,
+      "uuid": "a740454955f54f07a414111b499d6846"
+    }],
+    "success": true,
+    "timeout": 0
+  },
+  "lt_realname": {
+    "status": 0,
+    "checkResult": 0,
+    "code": "",
+    "timeout": 0
+  },
+  "lt_level": {
+    "status": 0,
+    "score": 0,
+    "code": "",
+    "timeout": 0
+  },
+  "lt_score": {
+    "status": "1",
+    "code": "00",
+    "errorDesc": "查询成功",
+    "deviceNumber": "792FCE904EFE7520E8352479AC646DE7",
+    "score": "80",
+    "confidence ": "80",
+    "provId": "80",
+    "onlineTime ": "7",
+    "timeout": 0
+  }
+}

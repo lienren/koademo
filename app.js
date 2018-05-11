@@ -2,7 +2,7 @@
  * @Author: Lienren 
  * @Date: 2018-01-02 14:28:21 
  * @Last Modified by: Lienren
- * @Last Modified time: 2018-01-24 14:44:59
+ * @Last Modified time: 2018-03-28 22:42:50
  */
 'use strict';
 const http = require('http');
@@ -29,6 +29,10 @@ app.context.db = sqlhelper;
 // mongodb初始化
 // sudo mongod --config /usr/local/etc/mongod.conf --auth
 
+// 加载API数据配置
+const api_data = require('./routers/api_data');
+app.context.api_data = api_data;
+
 // 静态存放地址
 const staticPath = './static';
 app.use(koastatic(path.join(__dirname, staticPath)));
@@ -37,7 +41,11 @@ app.use(koastatic(path.join(__dirname, staticPath)));
 app.use(cors());
 
 // 使用koa-bodyparser中间件
-app.use(bodyParser());
+app.use(
+  bodyParser({
+    enableTypes: ['json', 'form']
+  })
+);
 
 // 全局处理异常
 app.use(async (ctx, next) => {
@@ -53,8 +61,10 @@ app.use(async (ctx, next) => {
 });
 
 // 使用路由
-const router = require('./router');
+const router = require('./routers/router');
+const api = require('./routers/api');
 app.use(router);
+app.use(api);
 
 // 绑定访问端口
-http.createServer(app.callback()).listen(3000);
+http.createServer(app.callback()).listen(13000);
